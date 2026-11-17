@@ -1,12 +1,17 @@
 using Scalar.AspNetCore;
+using ThirtyDaysDotNet.Api.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
+// Add services to the container.
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+//builder.Services.AddTransient<IDeveloperService, DeveloperService>();
+builder.Services.AddScoped<IDeveloperService, DeveloperService>();
+//builder.Services.AddSingleton<IDeveloperService, DeveloperService>();
 
 var app = builder.Build();
 
